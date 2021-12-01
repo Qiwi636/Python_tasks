@@ -1,0 +1,73 @@
+# created by Илья Данилов
+# date 07.11.2021
+# description Выборы Государственной Думы
+
+def result_election(dictionary):
+    pass
+
+
+# def result_election(dictionary):
+#     # print(dictionary)
+#     # print(total_people)
+#     aboba = 0
+#     # print(party_dict)
+#     for e in dictionary:
+#         el = percent_people(e, dictionary[e], total_people)
+#         aboba += percent_party(el, 450)
+#         # print(e, percent_party(el, 450), el)
+#         dictionary[e] = percent_party(el, 450)
+#     print(aboba)
+#
+#     # print(party_dict_float)
+#     anota = 0
+#     for e in party_dict_float:
+#         el = percent_people(e, party_dict_float[e], 450 - aboba)
+#         anota += percent_party(el, 450 - aboba)
+#         party_dict_float[e] = percent_party(el, 450 - aboba)
+#         # print(e, percent_party(el, 450 - aboba), el)
+#     print(anota)
+#     for e in dictionary:
+#         # print(dictionary[e])
+#         # print(party_dict_float[e])
+#         dictionary[e] += party_dict_float[e]
+#         print(dictionary[e])
+#
+#
+# def percent_people(party, value, total_value):
+#     p = 100 / (total_value / value)
+#     party_dict_float[party] = p % 1
+#     # print(f'percent people {100 / (total_value / value)}')
+#     return int(p)
+#
+#
+# def percent_party(value, max_party):
+#     return round(value * (max_party / 100))
+#
+#
+def election(party, peoples, dictionary):
+    if party not in dictionary:
+        dictionary[party] = peoples
+    else:
+        dictionary[party] += peoples
+    # print(dictionary)
+
+
+if __name__ == '__main__':
+    total_people = 0
+    party_dict = dict()
+    party_dict_float = dict()
+    while True:
+        try:
+            input_list = list(map(str, input().split()))
+            party_str = ''
+            for x in input_list[:-1]:
+                party_str += f'{x} '
+            int_people = int(input_list[-1])
+            total_people += int_people
+        except (ValueError, TypeError):
+            print('ERROR!')
+        except EOFError:
+            result_election(party_dict)
+            break
+        else:
+            election(party_str.strip(), int_people, party_dict)

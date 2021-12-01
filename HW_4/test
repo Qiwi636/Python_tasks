@@ -1,0 +1,10 @@
+8 5
+6 1
+4 8
+2 4
+7 7
+5 3
+3 6
+1 2
+YES
+                print(f'{queen[0]} {queen[1]} and {any_quenn[0]} {any_quenn[1]}')
